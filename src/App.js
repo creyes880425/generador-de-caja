@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { Col, Container, Row } from 'reactstrap';
+import { useState } from 'react';
 import './App.css';
+import MyForm from './components/cajas/form';
+import List from './components/cajas/list';
+
+const initialState = [];
 
 function App() {
+  const [cajas, setCajas] = useState(initialState)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col md={{ offset: 3, size: 6 }} sm="12">
+          <MyForm cajas={ cajas }  setCajas={ setCajas }/>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={{ offset: 3, size: 6 }} sm="12">
+          <List cajas={ cajas }/>
+        </Col>
+      </Row>    
+    </Container>
+    
   );
 }
 
